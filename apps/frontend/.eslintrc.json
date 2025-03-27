@@ -1,0 +1,34 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:tailwindcss/recommended",
+    "@avicenne-studio/eslint-config/react"
+  ],
+  "plugins": ["react", "prettier", "@typescript-eslint", "tailwindcss"],
+  "rules": {
+    "@typescript-eslint/no-misused-promises": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "react/state-in-constructor": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-key": "warn",
+    "react/display-name": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}

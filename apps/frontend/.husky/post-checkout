@@ -1,0 +1,13 @@
+#!/bin/sh
+
+HUSKY_SCRIPT="$(dirname -- "$0")/_/husky.sh"
+
+if ! [ -f "HUSKY_SCRIPT" ]; then
+    echo "The husky.sh file cannot be found. Skipping post-checkout."
+    exit 0
+fi
+
+. "$HUSKY_SCRIPT"
+
+# Disable concurrent to run `check-types` after ESLint in lint-staged
+npx lint-staged --concurrent false
