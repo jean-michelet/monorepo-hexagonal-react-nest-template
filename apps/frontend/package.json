@@ -1,20 +1,24 @@
 {
-  "name": "avicenne-react-template",
+  "name": "avicenne-hexagonal-react-template",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
+    "start": "vite preview",
     "check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:debug": "npm run lint -- --debug",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky",
     "prettier": "prettier .",
-    "format": "npm run prettier -- --write"
+    "format": "npm run prettier -- --write",
+    "test": "vitest"
   },
   "dependencies": {
+    "@avicenne/shared": "*",
+    "@fastify/deepmerge": "^3.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
@@ -29,6 +33,7 @@
     "vite": "^6.2.3",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vite-plugin-svgr": "^4.3.0",
+    "vitest": "^3.0.9",
     "zustand": "^5.0.3"
   },
   "browserslist": {

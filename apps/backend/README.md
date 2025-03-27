@@ -1,0 +1,3 @@
+# Todo
+
+Uuid generator interface
