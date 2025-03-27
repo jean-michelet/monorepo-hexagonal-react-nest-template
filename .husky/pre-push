@@ -1,0 +1,11 @@
+valid_branch_regex="^(main|dev|staging|(feat|tests|(bug|hot)fix)(\/[a-z0-9]+(-[a-z0-9]+)*){1,2})$"
+
+local_branch=`git rev-parse --abbrev-ref HEAD`
+
+if [[ ! $local_branch =~ $valid_branch_regex ]]
+then
+    echo "This branch violates the branch naming rules. Please rename your branch."
+    exit 1
+fi
+
+exit 0

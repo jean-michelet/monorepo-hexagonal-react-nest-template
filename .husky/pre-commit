@@ -1,0 +1,6 @@
+# Disable concurrent to run `check-types` after ESLint in lint-staged
+npx lint-staged --concurrent false
+
+npm run check
+
+npm run lint
