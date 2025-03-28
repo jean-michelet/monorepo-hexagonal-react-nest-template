@@ -5,7 +5,7 @@ import {
   FIXTURES_LOADER_TOKEN,
   IFixturesLoader,
 } from "../fixtures/ports/fixtures-loader.interface";
-import { UserFixtures } from "../fixtures/users.fixture";
+import { UserFixtures } from "@avicenne/shared/fixtures/users.fixture";
 import {
   IUsersRepository,
   USERS_REPOSITORY_TOKEN,

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 import { TaskEntity } from "./task.entity";
-import type { IUser } from "../../../../users/models/user";
+import { IUser  } from "@avicenne/shared/users";
 
 @Entity("users")
 export class UserEntity implements IUser {

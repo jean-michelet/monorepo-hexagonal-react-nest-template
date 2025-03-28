@@ -7,7 +7,7 @@ import {
 } from "../ports/users.repository.interface";
 import { UserEntity } from "../../core/adapters/type-orm/entities/user.entity";
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
-import { IUser } from "../models/user";
+import { IUser  } from "@avicenne/shared/users";
 
 @Injectable()
 export class TypeOrmUsersRepository implements IUsersRepository {

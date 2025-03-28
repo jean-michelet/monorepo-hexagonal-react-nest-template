@@ -1,5 +1,5 @@
+import { IUser } from "@avicenne/shared/users";
 import { CreateUserDto, IUsersService } from "../ports/users.service.interface";
-import { IUser } from "../types/users";
 
 export class InMemoryUsersService implements IUsersService {
   private users: IUser[] = [

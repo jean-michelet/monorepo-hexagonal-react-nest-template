@@ -1,6 +1,7 @@
+import { IUpdateTask } from "@avicenne/shared/tasks";
 import { IsOptional, IsBoolean, IsString } from "class-validator";
 
-export class UpdateTaskDto {
+export class UpdateTaskDto implements IUpdateTask {
   @IsOptional()
   @IsString()
   title?: string;

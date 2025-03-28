@@ -3,8 +3,8 @@ import { NotFoundException } from "@nestjs/common";
 import { FakeTasksRepository } from "./adapters/fake-tasks.repository";
 import { TasksService } from "./tasks.service";
 import { FakeTransactionManager } from "../core/adapters/fake-transaction-manager";
-import { TaskFixtures } from "../fixtures/tasks.fixture";
-import { UserFixtures } from "../fixtures/users.fixture";
+import { TaskFixtures } from "@avicenne/shared/fixtures/tasks.fixture";
+import { UserFixtures } from "@avicenne/shared/fixtures/users.fixture";
 import { FakeUsersRepository } from "../users/adapters/fake-users.repository";
 import { StubIDGenerator } from "../core/adapters/stub-id-generator";
 
@@ -76,7 +76,7 @@ describe("TasksService", () => {
         ...taskData,
         id: "id-1",
         isCompleted: false,
-        assignedUser: undefined,
+        assignedUser: null,
       });
     });
   });

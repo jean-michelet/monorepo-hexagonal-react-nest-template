@@ -20,9 +20,12 @@ export default function CreateUserForm() {
         placeholder="Enter user name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border border-gray-300 rounded px-3 py-1 mr-2"
+        className="border-gray-300 mr-2 rounded border px-3 py-1"
       />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-1 rounded">
+      <button
+        type="submit"
+        className="rounded bg-blue-600 px-4 py-1 text-white"
+      >
         Create User
       </button>
     </form>

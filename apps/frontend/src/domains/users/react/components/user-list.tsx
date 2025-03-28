@@ -6,7 +6,7 @@ export default function UserList() {
   return (
     <ul className="space-y-2">
       {users.map((user) => (
-        <li key={user.id} className="border p-3 rounded">
+        <li key={user.id} className="rounded border p-3">
           <strong>{user.name}</strong> — {user.id}
         </li>
       ))}

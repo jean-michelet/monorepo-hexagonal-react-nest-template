@@ -1,20 +1,21 @@
 import { create } from "zustand";
 import type { ITasksService } from "./ports/tasks.service.interface";
-import { CreateTaskDto, Task, UpdateTaskDto } from "./types/tasks";
 import { HttpTasksService } from "./adapters/http-tasks.service";
 import { FetchHttpClient } from "@/core/http/adapter/fetch-http-client";
+import { ICreateTask, ITask, IUpdateTask } from "@avicenne/shared/tasks";
+import { getErrorMessage } from "@/core/utils/get-error-message";
 
 interface TasksState {
-  tasks: Task[];
+  tasks: ITask[];
   loading: boolean;
   error: string | null;
   notifiedTaskIds: string[];
 
   fetchTasks: () => Promise<void>;
-  createTask: (data: CreateTaskDto) => Promise<void>;
-  updateTask: (id: string, data: UpdateTaskDto) => Promise<void>;
+  createTask: (data: ICreateTask) => Promise<void>;
+  updateTask: (id: string, data: IUpdateTask) => Promise<void>;
   assignTask: (id: string, assigneeId: string) => Promise<void>;
-  unassignTask: (id: string) => Promise<void>;  
+  unassignTask: (id: string) => Promise<void>;
   dismissNotification: (id: string) => void;
 }
 
@@ -30,32 +31,35 @@ export function createTasksStore(tasksService: ITasksService) {
       try {
         const data = await tasksService.getIncompleteTasks();
         set({ tasks: data, loading: false });
-      } catch (err: any) {
-        set({ error: err.message ?? "Error fetching tasks", loading: false });
+      } catch (err: unknown) {
+        set({
+          error: getErrorMessage(err) ?? "Error fetching tasks",
+          loading: false,
+        });
       }
     },
 
-    async createTask(data: CreateTaskDto) {
+    async createTask(data: ICreateTask) {
       try {
         const newTask = await tasksService.createTask(data);
         set((state) => ({
           tasks: [...state.tasks, newTask],
           notifiedTaskIds: [...state.notifiedTaskIds, newTask.id],
         }));
-      } catch (err: any) {
-        set({ error: err.message ?? "Error creating task" });
+      } catch (err: unknown) {
+        set({ error: getErrorMessage(err) ?? "Error creating task" });
       }
     },
 
-    async updateTask(id: string, data: UpdateTaskDto) {
+    async updateTask(id: string, data: IUpdateTask) {
       try {
         await tasksService.updateTask(id, data);
         const updatedTasks = get().tasks.map((t) =>
-          t.id === id ? { ...t, ...data } : t
+          t.id === id ? { ...t, ...data } : t,
         );
         set({ tasks: updatedTasks });
-      } catch (err: any) {
-        set({ error: err.message ?? "Error updating task" });
+      } catch (err: unknown) {
+        set({ error: getErrorMessage(err) ?? "Error updating task" });
       }
     },
 
@@ -69,11 +73,11 @@ export function createTasksStore(tasksService: ITasksService) {
                   ...t,
                   assignedUser: { id: assigneeId, name: "Some-user-name" },
                 }
-              : t
+              : t,
           ),
         }));
-      } catch (err: any) {
-        set({ error: err.message ?? "Error assigning task" });
+      } catch (err: unknown) {
+        set({ error: getErrorMessage(err) ?? "Error assigning task" });
       }
     },
 
@@ -82,11 +86,11 @@ export function createTasksStore(tasksService: ITasksService) {
         await tasksService.unassignTask(id);
         set((state) => ({
           tasks: state.tasks.map((t) =>
-            t.id === id ? { ...t, assignedUser: undefined } : t
+            t.id === id ? { ...t, assignedUser: undefined } : t,
           ),
         }));
-      } catch (err: any) {
-        set({ error: err.message ?? "Error unassigning task" });
+      } catch (err: unknown) {
+        set({ error: getErrorMessage(err) ?? "Error unassigning task" });
       }
     },
 
@@ -99,5 +103,5 @@ export function createTasksStore(tasksService: ITasksService) {
 }
 
 export const useTasksStore = createTasksStore(
-  new HttpTasksService(new FetchHttpClient("http://localhost:8000/api"))
+  new HttpTasksService(new FetchHttpClient("http://localhost:8000/api")),
 );

@@ -1,5 +1,6 @@
-import { IUser } from "../../users/models/user";
-import { ITask } from "../../tasks/models/task";
+import { ITask } from "@avicenne/shared/tasks";
+import { IUser } from "@avicenne/shared/users";
+
 
 export const FIXTURES_LOADER_TOKEN = Symbol("FIXTURES_LOADER_TOKEN");
 

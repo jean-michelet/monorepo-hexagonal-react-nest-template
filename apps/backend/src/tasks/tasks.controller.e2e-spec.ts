@@ -4,14 +4,13 @@ import {
   type ITasksRepository,
   TASKS_REPOSITORY_TOKEN,
 } from "./ports/tasks.repository.interface";
-import { UserFixtures } from "../fixtures/users.fixture";
 import { NestFastifyApplication } from "@nestjs/platform-fastify";
 import { createTestApp } from "../createTestApp";
 import {
   FIXTURES_LOADER_TOKEN,
   IFixturesLoader,
 } from "../fixtures/ports/fixtures-loader.interface";
-import { TaskFixtures } from "../fixtures/tasks.fixture";
+import { TaskFixtures, UserFixtures } from "@avicenne/shared";
 
 describe("TasksController (E2E)", () => {
   let app: NestFastifyApplication;
@@ -86,6 +85,7 @@ describe("TasksController (E2E)", () => {
         id: expect.any(String),
         title: "New Task",
         isCompleted: false,
+        assignedUser: null
       });
 
       const includesCreatedTask = (

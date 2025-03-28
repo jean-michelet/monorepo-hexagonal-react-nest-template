@@ -1,7 +1,8 @@
+import { IUser } from "@avicenne/shared/users";
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
-import type { IUser } from "../../users/models/user";
+
 import type { UpdateTaskDto } from "../dtos/update-task.dto";
-import type { ITask } from "../models/task";
+import { ITask } from "@avicenne/shared/tasks";
 
 export const TASKS_REPOSITORY_TOKEN = Symbol("TASKS_REPOSITORY_TOKEN");
 

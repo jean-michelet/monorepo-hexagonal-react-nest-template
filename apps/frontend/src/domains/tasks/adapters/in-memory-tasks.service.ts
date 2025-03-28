@@ -1,8 +1,8 @@
+import { ICreateTask, ITask, IUpdateTask } from "@avicenne/shared/tasks";
 import type { ITasksService } from "../ports/tasks.service.interface";
-import { CreateTaskDto, Task, UpdateTaskDto } from "../types/tasks";
 
 export class InMemoryTasksService implements ITasksService {
-  private tasks: Task[] = [
+  private tasks: ITask[] = [
     {
       id: "1",
       title: "Sample Task 1",
@@ -23,8 +23,8 @@ export class InMemoryTasksService implements ITasksService {
     return this.tasks.filter((t) => !t.isCompleted);
   }
 
-  async createTask(data: CreateTaskDto) {
-    const newTask: Task = {
+  async createTask(data: ICreateTask) {
+    const newTask: ITask = {
       id: (Math.random() * 10000).toFixed(0),
       title: data.title,
       isCompleted: false,
@@ -36,7 +36,7 @@ export class InMemoryTasksService implements ITasksService {
     return newTask;
   }
 
-  async updateTask(id: string, data: UpdateTaskDto) {
+  async updateTask(id: string, data: IUpdateTask) {
     const idx = this.tasks.findIndex((t) => t.id === id);
     if (idx < 0) throw new Error("Task not found");
 
@@ -51,7 +51,7 @@ export class InMemoryTasksService implements ITasksService {
     if (idx < 0) throw new Error("Task not found");
 
     this.tasks[idx].assignedUser = { id: assigneeId, name: "FakeUser" };
-    return this.tasks[idx].assignedUser
+    return this.tasks[idx].assignedUser;
   }
 
   async unassignTask(id: string) {

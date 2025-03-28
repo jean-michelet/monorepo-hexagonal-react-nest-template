@@ -1,4 +1,4 @@
-import type { IUser } from "../users/models/user";
+import { IUser } from "../users";
 
 export const UserFixtures: IUser[] = [
   { id: "user1", name: "Alice" },

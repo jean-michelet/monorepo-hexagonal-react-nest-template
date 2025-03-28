@@ -2,7 +2,8 @@ import { create } from "zustand";
 import { HttpUsersService } from "./adapters/http-users.service";
 import { FetchHttpClient } from "@/core/http/adapter/fetch-http-client";
 import { IUsersService } from "./ports/users.service.interface";
-import { IUser } from "./types/users";
+import { IUser } from "@avicenne/shared/users";
+import { getErrorMessage } from "@/core/utils/get-error-message";
 
 interface UsersState {
   users: IUser[];
@@ -24,8 +25,11 @@ export function createUsersStore(usersService: IUsersService) {
       try {
         const data = await usersService.getAll();
         set({ users: data, loading: false });
-      } catch (err: any) {
-        set({ error: err.message ?? "Error fetching users", loading: false });
+      } catch (err: unknown) {
+        set({
+          error: getErrorMessage(err) ?? "Error fetching users",
+          loading: false,
+        });
       }
     },
 
@@ -33,13 +37,13 @@ export function createUsersStore(usersService: IUsersService) {
       try {
         const newUser = await usersService.create({ name });
         set((state) => ({ users: [...state.users, newUser] }));
-      } catch (err: any) {
-        set({ error: err.message ?? "Error creating user" });
+      } catch (err: unknown) {
+        set({ error: getErrorMessage(err) ?? "Error creating user" });
       }
     },
   }));
 }
 
 export const useUsersStore = createUsersStore(
-  new HttpUsersService(new FetchHttpClient("http://localhost:8000/api"))
+  new HttpUsersService(new FetchHttpClient("http://localhost:8000/api")),
 );

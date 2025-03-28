@@ -9,7 +9,7 @@ import { TaskEntity } from "../../core/adapters/type-orm/entities/task.entity";
 import type { UserEntity } from "../../core/adapters/type-orm/entities/user.entity";
 import type { UpdateTaskDto } from "../dtos/update-task.dto";
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
-import { ITask } from "../../tasks/models/task";
+import { ITask } from "@avicenne/shared/tasks";
 
 @Injectable()
 export class TypeOrmTasksRepository implements ITasksRepository {

@@ -20,15 +20,12 @@ export default function AssignForm({ taskId }: Props) {
     <form onSubmit={handleAssign} className="flex items-center gap-2">
       <input
         type="text"
-        className="border rounded px-2 py-1 text-sm"
+        className="rounded border px-2 py-1 text-sm"
         placeholder="Assignee ID"
         value={assigneeId}
         onChange={(e) => setAssigneeId(e.target.value)}
       />
-      <button
-        type="submit"
-        className="bg-gray-600 text-white rounded px-2 py-1 text-sm hover:bg-gray-700"
-      >
+      <button type="submit" className="rounded px-2 py-1 text-sm text-white">
         Assign
       </button>
     </form>

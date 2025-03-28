@@ -1,6 +1,6 @@
 import type { IHttpClient } from "@/core/http/ports/http-client";
-import { IUser } from "../types/users";
 import { CreateUserDto, IUsersService } from "../ports/users.service.interface";
+import { IUser } from "@avicenne/shared/users";
 
 export class HttpUsersService implements IUsersService {
   constructor(private readonly httpClient: IHttpClient) {}

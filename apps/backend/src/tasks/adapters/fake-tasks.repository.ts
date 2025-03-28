@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   TASKS_REPOSITORY_TOKEN,
   type ITasksRepository,
 } from "../ports/tasks.repository.interface";
-import type { IUser } from "../../users/models/user";
 import type { CreateTaskDto } from "../dtos/create-task.dto";
 import type { UpdateTaskDto } from "../dtos/update-task.dto";
-import type { ITask } from "../models/task";
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
+import { IUser } from "@avicenne/shared/users";
+import { ITask } from "@avicenne/shared/tasks";
 
 export class FakeTasksRepository implements ITasksRepository {
   constructor(private readonly tasks: ITask[] = []) {

@@ -1,4 +1,4 @@
-import { IUser } from "../types/users";
+import { IUser } from "@avicenne/shared/users";
 
 export interface CreateUserDto {
   name: string;

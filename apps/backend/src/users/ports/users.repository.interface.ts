@@ -1,5 +1,5 @@
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
-import type { IUser } from "../models/user";
+import { IUser  } from "@avicenne/shared/users";
 
 export const USERS_REPOSITORY_TOKEN = Symbol("USERS_REPOSITORY_TOKEN");
 

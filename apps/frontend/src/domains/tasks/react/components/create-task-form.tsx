@@ -17,9 +17,9 @@ export default function CreateTaskForm() {
   return (
     <form onSubmit={handleSubmit} className="mb-8 flex gap-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700">Title</label>
+        <label className="block text-sm font-medium">Title</label>
         <input
-          className="border rounded px-2 py-1"
+          className="rounded border px-2 py-1"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -27,11 +27,9 @@ export default function CreateTaskForm() {
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Assignee ID
-        </label>
+        <label className="block text-sm font-medium">Assignee ID</label>
         <input
-          className="border rounded px-2 py-1"
+          className="rounded border px-2 py-1"
           type="text"
           value={assigneeId}
           onChange={(e) => setAssigneeId(e.target.value)}
@@ -40,7 +38,7 @@ export default function CreateTaskForm() {
       </div>
       <button
         type="submit"
-        className="self-end bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="self-end rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
       >
         Create
       </button>

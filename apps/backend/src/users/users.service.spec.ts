@@ -1,7 +1,7 @@
 import { UsersService } from "./users.service";
 import { FakeUsersRepository } from "./adapters/fake-users.repository";
 import { StubIDGenerator } from "../core/adapters/stub-id-generator";
-import { UserFixtures } from "../fixtures/users.fixture";
+import { UserFixtures } from "@avicenne/shared/fixtures/users.fixture";
 
 describe("UsersService", () => {
   let service: UsersService;

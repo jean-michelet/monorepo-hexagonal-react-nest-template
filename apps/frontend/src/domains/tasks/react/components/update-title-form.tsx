@@ -20,13 +20,13 @@ export default function UpdateTitleForm({ taskId, currentTitle }: Props) {
     <form onSubmit={handleUpdate} className="flex gap-2">
       <input
         type="text"
-        className="border rounded px-2 py-1 text-sm"
+        className="rounded border px-2 py-1 text-sm"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <button
         type="submit"
-        className="bg-gray-600 text-white rounded px-2 py-1 text-sm hover:bg-gray-700"
+        className="bg-gray-600 hover:bg-gray-700 rounded px-2 py-1 text-sm text-white"
       >
         Update
       </button>

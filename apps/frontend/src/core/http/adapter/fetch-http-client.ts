@@ -21,9 +21,10 @@ export class FetchHttpClient implements IHttpClient {
       deepMerge(initialRequestInit, overrideRequestInit),
     );
 
-    let resBody = await res.text()
+    let resBody = await res.text();
     try {
-      resBody = JSON.parse(resBody)
+      resBody = JSON.parse(resBody);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {}
 
     if (!res.ok) {

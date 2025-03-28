@@ -13,8 +13,8 @@ export default function TasksPage() {
 
   return (
     <Layout>
-      <div className="max-w-3xl mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-6">Tasks</h1>
+      <div className="mx-auto max-w-3xl p-4">
+        <h1 className="mb-6 text-2xl font-bold">Tasks</h1>
 
         <CreateTaskForm />
 

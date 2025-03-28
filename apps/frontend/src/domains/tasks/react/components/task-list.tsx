@@ -7,8 +7,9 @@ export default function TaskList() {
   return (
     <div>
       {notifiedTaskIds.length > 0 && (
-        <div className="mb-4 p-2 bg-blue-100 text-blue-800 text-sm rounded">
-          {notifiedTaskIds.length} task{notifiedTaskIds.length > 1 ? "s" : ""} created
+        <div className="mb-4 rounded bg-blue-100 p-2 text-sm text-blue-800">
+          {notifiedTaskIds.length} task{notifiedTaskIds.length > 1 ? "s" : ""}{" "}
+          created
         </div>
       )}
 

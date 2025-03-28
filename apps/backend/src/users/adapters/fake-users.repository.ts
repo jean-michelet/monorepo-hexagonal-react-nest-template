@@ -2,8 +2,8 @@ import {
   USERS_REPOSITORY_TOKEN,
   type IUsersRepository,
 } from "../ports/users.repository.interface";
-import type { IUser } from "../models/user";
 import { ITransaction } from "../../core/ports/transaction-manager.interface";
+import { IUser  } from "@avicenne/shared/users";
 
 export class FakeUsersRepository implements IUsersRepository {
   constructor(private readonly users: IUser[] = []) {

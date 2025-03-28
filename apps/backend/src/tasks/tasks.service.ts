@@ -14,7 +14,7 @@ import {
   IUsersRepository,
   USERS_REPOSITORY_TOKEN,
 } from "../users/ports/users.repository.interface";
-import { IUser } from "../users/models/user";
+import { IUser  } from "@avicenne/shared/users";
 import { ID_GENERATOR, IIDGenerator } from "../core/ports/id-generator.interface";
 
 @Injectable()
